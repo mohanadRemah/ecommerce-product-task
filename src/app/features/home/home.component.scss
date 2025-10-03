@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+
+.home {
+  min-height: 100vh;
+  background-color: $basic-white;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 50px;
+    flex-direction: column;
+
+    &__title {
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    &__breadcrumb {
+      font-size: 18px;
+      font-weight: 400;
+      color: $bread-crumb-color;
+
+      display: flex;
+      gap: 10px;
+
+      .separator {
+        color: $separator-color;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+}

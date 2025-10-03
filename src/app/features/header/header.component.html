@@ -1,0 +1,44 @@
+<header class="header">
+  <div class="header__bar">
+    <img src="assets/logo.png" alt="ClickTik Logo" />
+
+    <div class="header__bar__home">
+      <span class="name">ClickTik</span>
+      <span class="home">Home</span>
+    </div>
+  </div>
+
+  @if (!isLoggedIn) {
+    <button class="login-btn" (click)="onLogin()">Log in</button>
+  }
+
+  @if (isLoggedIn) {
+    <div class="header__actions-logged-in">
+      <div class="search-container">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="searchQuerySubject.next($event)"
+          placeholder="Search"
+          class="search-input"
+        />
+      </div>
+
+      <button class="cart-btn">
+        <img class="cart-icon" src="assets/cart.jpg" alt="ClickTik Logo" />
+
+        @if (cartCount > 0) {
+          <div class="cart-count">
+            {{ cartCount }}
+          </div>
+        }
+
+      </button>
+
+      <button class="account-btn">
+        <span>Account</span>
+      </button>
+    </div>
+  }
+
+</header>

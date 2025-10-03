@@ -1,0 +1,49 @@
+@import '../../../styles/variables';
+
+.categories {
+  padding: 15px 15px;
+  border: 0.5px solid $border-color-secondary;
+  border-radius: $border-radius;
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $font-color-secondary;
+    margin-bottom: 10px;
+    font-family: Open sans-serif;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__all {
+      gap: 8px;
+      display: flex;
+
+      span {
+        font-weight: 400;
+        font-size: 16px;
+        color: $font-color-secondary;
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+
+      input[type="radio"] {
+        cursor: pointer;
+      }
+
+      span {
+        font-weight: 400;
+        font-size: $font-size;
+        color: $font-color-secondary;
+      }
+    }
+  }
+}

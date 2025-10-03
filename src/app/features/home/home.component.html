@@ -1,0 +1,40 @@
+<div class="home">
+  <header class="home__header">
+    <div class="home__header__title">
+      <span>{{ selectedCategory?.name || 'All' }}</span>
+    </div>
+
+    <div class="home__header__breadcrumb">
+      <span>Home</span>
+      <span class="separator">/</span>
+      <span>Products</span>
+
+      @if (selectedCategory) {
+        <span class="separator" >/</span>
+        <span>{{ selectedCategory?.name || 'All' }}</span>
+      }
+
+    </div>
+  </header>
+
+  <div class="home__content">
+    <app-categories
+      [categories]="categories"
+      [selectedCategoryInput]="selectedCategory"
+      [totalProducts]="totalProducts"
+      [totalCategoryProducts]="totalCategoryProducts"
+      (selectedCategoryOutput)="onCategorySelected($event)"
+    ></app-categories>
+
+    <app-product-list
+      [products]="products"
+      [currentPage]="currentPage"
+      [itemsPerPage]="itemsPerPage"
+      [totalProducts]="totalCategoryProducts"
+      [sortBy]="sortBy"
+      (sortChanged)="onSortChanged($event)"
+      (pageChanged)="onPageChanged($event)"
+      (addToCart)="onAddToCart($event)"
+    ></app-product-list>
+  </div>
+</div>

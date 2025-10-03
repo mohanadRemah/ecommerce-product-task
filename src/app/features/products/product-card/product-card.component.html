@@ -1,0 +1,44 @@
+<div class="product-card">
+
+  @if (product.discountPercentage > 0) {
+    <div class="product-card__discount-badge">
+      - {{ product.discountPercentage | number:'1.1-2' }}%
+    </div>
+  }
+
+  <div class="product-card__image">
+    <img [src]="product.thumbnail" [alt]="product.title" />
+  </div>
+
+  <div class="product-card__content">
+    <h3 class="product-card__content__title">{{ product.title }}</h3>
+    <p class="product-card__content__description">{{ product.description }}</p>
+
+    <div class="product-card__content__prices">
+      @if (product.discountPercentage > 0) {
+        <span class="product-card__content__prices__old-price">
+          ${{ product.price }} USD
+        </span>
+      }
+
+      <span>
+        ${{ getDiscountedPrice() | number:'1.2-2' }} USD
+      </span>
+    </div>
+
+    <div class="product-card__content__meta">
+      <span>Brand: <strong>{{ product.brand }}</strong> </span>
+      <span>Category: <strong>{{ product.category }}</strong></span>
+      <span>In stock: <strong>{{ product.stock }}</strong></span>
+    </div>
+
+    <div class="product-card__content__statistics">
+      <span class="rating">{{ product.rating }}</span>
+      <span class="stock">({{ product.stock }})</span>
+    </div>
+
+    <button class="product-card__add-to-cart" (click)="addToCart()">
+      ADD TO CART
+    </button>
+  </div>
+</div>

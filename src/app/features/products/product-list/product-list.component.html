@@ -1,0 +1,57 @@
+<div class="product-list">
+  <div class="product-list__top-bar">
+
+    <div class="product-list__top-bar__count">
+      ({{ totalProducts }}) Products Found
+    </div>
+
+    <div class="product-list__top-bar__controls">
+
+      <div class="product-list__top-bar__controls__sort">
+
+        <label>Sort By:</label>
+        <select [(ngModel)]="sortBy" (change)="onSortChange()">
+          <option [ngValue]="null" disabled>Select sorting option</option>
+          <option value="popularity">Popularity</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Rating</option>
+        </select>
+
+      </div>
+    </div>
+  </div>
+
+  @if (products.length > 0) {
+    <div class="product-list__grid">
+      @for (product of products; track product.id) {
+        <app-product-card
+          [product]="product"
+          (addToCartClicked)="onAddToCartAction($event)"
+        ></app-product-card>
+      }
+    </div>
+  }
+
+
+  @if (totalPages > 1) {
+    <div class="product-list__paginated">
+
+      <button class="product-list__paginated__button-page" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+        &lt;
+      </button>
+
+      @for (page of getPageNumbers(); track page) {
+        <button class="product-list__paginated__button-page" [ngClass]="{'active': page === currentPage}" (click)="goToPage(page)">
+          {{ page }}
+        </button>
+      }
+
+      <button class="product-list__paginated__button-page" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages" >
+        &gt;
+      </button>
+
+    </div>
+  }
+
+</div>

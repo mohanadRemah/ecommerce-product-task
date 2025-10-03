@@ -1,0 +1,45 @@
+@import '../../../styles/variables';
+
+.footer-container {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: $dark-navy;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: $dark-navy;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: $border-radius;
+    }
+
+  .name {
+    font-weight: 500;
+    font-size: $font-size;
+    line-height: $line-height;
+
+    color: $basic-white;
+    background: $dark-navy;
+  }
+}
+
+  &__right {
+    background: $dark-navy;
+
+    span {
+      color: $gray-400;
+      background: $dark-navy;
+
+      font-size: $font-size;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+}

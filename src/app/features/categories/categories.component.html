@@ -1,0 +1,17 @@
+<div class="categories">
+  <h2 class="categories__title">Products</h2>
+
+  <div class="categories__list">
+    <label class="categories__list__all" >
+      <input type="radio" name="category" [checked]="!isCategorySelected()" (change)="onCategorySelection('')" />
+      <span>All ({{ totalProducts }})</span>
+    </label>
+
+    @for (category of categories; track category) {
+      <label class="categories__list__item">
+        <input type="radio" name="category" [checked]="isCategorySelected(category)" (change)="onCategorySelection(category)" />
+        <span>{{ category.name }} ({{ category.productsCount }})</span>
+      </label>
+    }
+  </div>
+</div>
